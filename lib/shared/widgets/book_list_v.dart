@@ -1,11 +1,9 @@
 import 'package:desafio2/model/escribo_model.dart';
-import 'package:desafio2/provider/fav_provider.dart';
 import 'package:desafio2/repository/escribo_repo.dart';
 import 'package:desafio2/shared/widgets/book_reader.dart';
 import 'package:desafio2/shared/widgets/book_saver/get_book.dart';
 import 'package:desafio2/shared/widgets/icons/fav_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BookListV extends StatefulWidget {
   final List<EscriboModel> livros;
@@ -15,12 +13,13 @@ class BookListV extends StatefulWidget {
   State<BookListV> createState() => _BookListVState();
 }
 
+bool isFav = false;
+
 bool loading = false;
 
 class _BookListVState extends State<BookListV> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FavoriteProvider>(context);
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, childAspectRatio: 0.65),
@@ -150,11 +149,13 @@ class _BookListVState extends State<BookListV> {
                                 fillColor: Colors.white,
                                 shape: const CircleBorder(),
                                 onPressed: () {
-                                  provider.toggleFavorite(livro);
+                                  setState(() {
+                                    isFav = !isFav;
+                                  });
                                 },
-                                child: provider.isFav(livro)
-                                    ? const FavIconActive()
-                                    : const FavIconDesactive()),
+                                child: isFav == false
+                                    ? const FavIconDesactive()
+                                    : const FavIconActive()),
                           ),
                         ],
                       )),

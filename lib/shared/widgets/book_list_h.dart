@@ -1,11 +1,9 @@
 import 'package:desafio2/model/escribo_model.dart';
-import 'package:desafio2/provider/fav_provider.dart';
 import 'package:desafio2/repository/escribo_repo.dart';
 import 'package:desafio2/shared/widgets/book_reader.dart';
 import 'package:desafio2/shared/widgets/book_saver/get_book.dart';
 import 'package:desafio2/shared/widgets/icons/fav_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BookListH extends StatefulWidget {
   final List<EscriboModel> livros;
@@ -15,12 +13,13 @@ class BookListH extends StatefulWidget {
   State<BookListH> createState() => _BookListHState();
 }
 
+bool isFav = false;
+
 class _BookListHState extends State<BookListH> {
   bool loading = false;
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FavoriteProvider>(context);
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: widget.livros.length,
@@ -142,12 +141,13 @@ class _BookListHState extends State<BookListH> {
                             fillColor: Colors.white,
                             shape: const CircleBorder(),
                             onPressed: () {
-                              provider.toggleFavorite(livro);
-                              provider.saveFavorite();
+                              setState(() {
+                                isFav = !isFav;
+                              });
                             },
-                            child: provider.isFav(livro)
-                                ? const FavIconActive()
-                                : const FavIconDesactive()),
+                            child: isFav == false
+                                ? const FavIconDesactive()
+                                : const FavIconActive()),
                       )
                     ],
                   )),
