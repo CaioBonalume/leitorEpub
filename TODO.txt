@@ -1,0 +1,3 @@
+Extra:
+* Add botao de deletar livro
+* Colocar barra de avanço do download do livro
