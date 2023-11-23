@@ -1,7 +1,9 @@
 # Leitor de Epub
 
 ## Iniciar
+Instale o APK que se localiza em /build/app/outputs/flutter-apk/ da aplicação no seu aparelho android.
 Clone a aplicação e execute através de um emulador android pelo VSCode ou AndroidStudio.
+Ou você também pode instalar em seu celular.
 
 ## Documentação
 

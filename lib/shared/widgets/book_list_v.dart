@@ -22,7 +22,7 @@ class _BookListVState extends State<BookListV> {
   Widget build(BuildContext context) {
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 0.65),
+            crossAxisCount: 2, childAspectRatio: 0.58),
         scrollDirection: Axis.vertical,
         itemCount: widget.livros.length,
         itemBuilder: (context, index) {
