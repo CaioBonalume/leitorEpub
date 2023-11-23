@@ -1,8 +1,9 @@
 # Leitor de Epub
 
-A new Flutter project.
+## Iniciar
+Clone a aplicação e execute através de um emulador android pelo VSCode ou AndroidStudio.
 
-## Getting Started
+## Documentação
 
 Essa é uma aplicação em FLutter desenvolvida para o desafio da Escribo.
 
