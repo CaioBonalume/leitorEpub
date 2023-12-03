@@ -25,6 +25,17 @@ class EscriboModel {
     return jsonList.map((json) => EscriboModel.fromJson(json)).toList();
   }
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['author'] = author;
+    data['cover_url'] = coverUrl;
+    data['download_url'] = downloadUrl;
+
+    return data;
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -37,10 +48,11 @@ class EscriboModel {
 
   factory EscriboModel.fromMap(Map<String, dynamic> map) {
     return EscriboModel(
-        id: map['id'],
-        title: map['title'],
-        author: map['author'],
-        coverUrl: map['cover_url'],
-        downloadUrl: map['download_url']);
+      id: map['id'],
+      title: map['title'],
+      author: map['author'],
+      coverUrl: map['cover_url'],
+      downloadUrl: map['download_url'],
+    );
   }
 }

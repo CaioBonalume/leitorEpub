@@ -1,6 +1,7 @@
 import 'package:desafio2/model/escribo_model.dart';
 import 'package:desafio2/pages/Favorites/book_fav_list.dart';
 import 'package:desafio2/repository/escribo_repo.dart';
+import 'package:desafio2/repository/fav_repo.dart';
 import 'package:flutter/material.dart';
 
 class FavPage extends StatelessWidget {
@@ -8,6 +9,7 @@ class FavPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FavRepo favRepo = FavRepo();
     return Stack(
       children: [
         Column(
@@ -17,7 +19,7 @@ class FavPage extends StatelessWidget {
             SizedBox(
               height: 600,
               child: FutureBuilder<List<EscriboModel>>(
-                  future: consultarLivros(),
+                  future: favRepo.getFavorites(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return BookFavList(livros: snapshot.data!);

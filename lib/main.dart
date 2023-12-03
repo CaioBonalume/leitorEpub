@@ -1,4 +1,4 @@
-import 'package:desafio2/provider/fav_provider.dart';
+import 'package:desafio2/repository/fav_repo.dart';
 import 'package:desafio2/shared/color_schemes.dart';
 import 'package:desafio2/pages/Home/home.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> FavoriteProvider())
+        ChangeNotifierProvider(create: (context) => FavRepo())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
